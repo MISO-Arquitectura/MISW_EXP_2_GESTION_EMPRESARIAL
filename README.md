@@ -8,12 +8,15 @@ A continuación se ilustra el JSON y el diagrama para mayor comprensión de la a
 
  ```json
 {
-     "http_method": "post",
-     "url_endpoint": "/ofertas",
-     "client": "safari",
-     "operating_system": "macos",
-     "ip_address": "127.5.87.255",
-     "access_datetime": "2020-04-15T12:19:50"
+	"req": {
+		"http_method": "get",
+		"url_endpoint": "/ofertas",
+		"user_agent": "safari",
+		"operating_system": "macos",
+		"ip_address": "127.5.87.255",
+		"access_datetime": "2022-04-08T12:08:35"
+	},
+	"info": 1
 }
 ```
 

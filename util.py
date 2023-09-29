@@ -1,5 +1,6 @@
 import random
 from datetime import datetime, timedelta, time
+from typing import List, Union, Dict
 
 
 def generate_random_datetime(start_year: int, end_year: int) -> str:
@@ -91,7 +92,9 @@ def generate_random_request() -> dict:
     - dict: A dictionary containing randomly generated request features.
     """
 
+    obj = {}
     req = {}
+    info = 1
     # Define generators for 4 features
     http_method_generator = [['get', 'post', 'put', 'delete'], [50, 35, 10, 5]]
     url_generator = [['/ofertas', '/pagos', '/contratos', '/dummy_route'], [30, 30, 30, 10]]
@@ -109,5 +112,44 @@ def generate_random_request() -> dict:
 
     # Datetime generator
     req['access_datetime'] = generate_random_datetime(2020, 2022)
+    obj['req'] = req
+    obj['info'] = info
+    return obj
 
-    return req
+
+def simulated_data() -> list[Union[dict[str, str], dict[str, str], dict[str, str]]]:
+    return [
+        {
+            "req": {
+                'http_method': 'put', # Change the value of an offer
+                'url_endpoint': '/ofertas', # Change the value of an offer
+                'user_agent': 'chrome', # not user's usual browser
+                'operating_system': 'windows', # not user's usual os
+                'ip_address': f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}", # unknown ip
+                'access_datetime': '2023-09-26T14:16:46' # tuesday afternoon
+            },
+            "info": -1
+        },
+        {
+            "req": {
+                'http_method': 'put', # Change the value of an offer
+                'url_endpoint': '/ofertas', # Change the value of an offer
+                'user_agent': 'safari', # user's usual browser
+                'operating_system': 'macos', # user's usual os
+                'ip_address': f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}", # unknown ip
+                'access_datetime': '2023-09-22T23:58:46' # friday midnight
+            },
+            "info": -1
+        },
+        {
+            "req": {
+                'http_method': 'put', # Change the value of an offer
+                'url_endpoint': '/ofertas',
+                'user_agent': 'chrome', # not user's usual browser
+                'operating_system': 'macos', # user's usual os
+                'ip_address': f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}", # unknown ip
+                'access_datetime': '2023-09-25T20:20:46' # monday night
+            },
+            "info": -1
+        }
+    ]
